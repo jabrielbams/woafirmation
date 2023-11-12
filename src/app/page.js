@@ -1,95 +1,74 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+
+const quotes = [
+  {
+    id: 1,
+    text: "Jika kamu benar-benar menginginkan sesuatu, kamu dapat mencari cara untuk mewujudkannya. - Cher",
+  },
+  {
+    id: 2,
+    text: "Keyakinan itu menular dan begitu pula kurangnya rasa percaya diri.",
+  },
+  {
+    id: 3,
+    text: "Ada banyak cara untuk maju, tetapi hanya satu cara untuk diam.",
+  },
+];
+
+const shuffleArray = (array) => {
+  let shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
 
 export default function Home() {
+  // Acak urutan quotes
+  const shuffledQuotes = shuffleArray(quotes);
+  // Pilih quote pertama setelah diacak
+  const randomQuote = shuffledQuotes[0];
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <div className={styles.header}>
+        <div className={styles.leftHeader}>
+          <p className={styles.leftText}>Quotes for you</p>
+          <p className={styles.leftDate}>Today - Friday</p>
+        </div>
+        <div className={styles.rightHeader}>
+          <Image
+            src='/woa.svg'
+            alt='WOA Logo'
+            width={100}
+            height={24}
+            priority
+          />
+        </div>
+      </div>
+      <div className={styles.divider}></div>
+
+      <div className={styles.body}>
+        <div className={styles.content}>
+          <div className={styles.leftContent}>
+            <h1 className={styles.idContent}>01</h1>
+          </div>
+          <div className={styles.rightContent}>
+            <p className={styles.textContent}>
+              "Hidup bukanlah masalah yang harus dipecahkan, tetapi kenyataan
+              yang harus dialami."
+            </p>
+            <p className={styles.author}>Soren Kierkegaard</p>
+          </div>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.graphic}>
+        <div className={styles.box} />
+        <div className={styles.ellipse} />
       </div>
     </main>
-  )
+  );
 }
