@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 3rem 8rem;
+  background-color: #020202;
 }
 
 .header {
@@ -92,7 +93,7 @@
 .box {
   border: 1px solid;
   border-color: #75757560;
-  background-color: black;
+  background-color: #020202;
   height: 400px;
   left: 586px;
   position: absolute;
@@ -110,6 +111,12 @@
   position: absolute;
   top: 164px;
   width: 1078px;
+}
+
+.loading {
+  flex: 1;
+  text-align: center; /* Tengahkan teks pada mobile */
+  margin-right: 0;
 }
 
 /* Mobile */
@@ -165,8 +172,8 @@
     justify-content: center; /* Tengahkan konten */
     align-items: center; /* Tengahkan konten */
     width: 100%;
-    margin-top: 2rem; /* Sesuaikan margin-top sesuai kebutuhan */
-    gap: 1rem; /* Sesuaikan gap sesuai kebutuhan */
+    margin-top: 2.5rem; /* Sesuaikan margin-top sesuai kebutuhan */
+    gap: 4rem; /* Sesuaikan gap sesuai kebutuhan */
   }
 
   .leftContent {
@@ -175,12 +182,7 @@
   }
 
   .idContent {
-    color: #f6f6f6;
-    font-family: Roboto;
-    font-size: 32px; /* Sesuaikan ukuran font sesuai kebutuhan */
-    font-style: normal;
-    font-weight: 400;
-    text-align: center; /* Tengahkan teks pada mobile */
+    display: none;
   }
 
   .rightContent {
@@ -217,7 +219,7 @@
   .box {
     border: 1px solid;
     border-color: #f6f6f618;
-    background-color: black;
+    background-color: #f6f6f618;
     height: 200px; /* Sesuaikan tinggi sesuai kebutuhan */
     width: 200px; /* Sesuaikan lebar sesuai kebutuhan */
     z-index: 2;

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import React, { useEffect, useState } from "react";
 import styles from "../page.module.css";
@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Quotes = ({ token, signature }) => {
   const [data, setData] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,28 +20,26 @@ const Quotes = ({ token, signature }) => {
       }
     };
 
-    fetchData(); // Call the fetchData function when the component mounts
+    fetchData();
 
-    // If you need to clean up, you can return a cleanup function from useEffect
     return () => {
       // Cleanup logic (if needed)
     };
-  }, [token, signature]); // Dependency array to re-run effect when token or signature changes
-
+  }, [token, signature]);
   return (
     <div className={styles.content}>
       {data ? (
         <>
           <div className={styles.leftContent}>
-            <h1 className={styles.idContent}>01</h1>
+            <h1 className={styles.idContent}>001</h1>
           </div>
           <div className={styles.rightContent}>
-            <p className={styles.textContent}>{data.quotes}</p>
-            <p className={styles.author}>{data.author}</p>
+            <p className={styles.textContent}>"{data.quotes}"</p>
+            <p className={styles.author}>- {data.author} -</p>
           </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <p className={styles.loading}>Loading...</p>
       )}
     </div>
   );

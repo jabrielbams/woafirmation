@@ -1,25 +1,50 @@
 "use client";
 // Import library yang diperlukan
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Quotes from "./components/quote";
 import { useParams } from "react-router-dom";
-import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router';
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
-import Page from "./screens/main";
-// Komponen utama yang menggunakan React Router
+const getCurrentDay = () => {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const currentDate = new Date();
+  const currentDayIndex = currentDate.getDay();
+  return days[currentDayIndex];
+};
+
 const Home = () => {
-  const searchParams = useSearchParams()
-  const token = searchParams.get('token')
-  const signature = searchParams.get('signature')
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+  const signature = searchParams.get("signature");
+  const [currentDay, setCurrentDay] = useState(getCurrentDay());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Update current day every minute
+      setCurrentDay(getCurrentDay());
+    }, 60000); // Update every minute
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.header}>
         <div className={styles.leftHeader}>
           <p className={styles.leftText}>Quotes for you</p>
-          <p className={styles.leftDate}>Today - Friday</p>
+          <p className={styles.leftDate}>Today - {currentDay}</p>
         </div>
         <div className={styles.rightHeader}>
           <Image
@@ -34,7 +59,10 @@ const Home = () => {
       <div className={styles.divider}></div>
 
       <div className={styles.body}>
-        <Quotes token={token} signature={signature} />
+        <Quotes
+          token={token}
+          signature={signature}
+        />
       </div>
 
       <div className={styles.graphic}>
