@@ -4,6 +4,7 @@
   padding: 3rem 8rem;
   background-color: #020202;
   color: white;
+  height: fit-content;
 }
 
 .header {
@@ -38,6 +39,7 @@
   width: 100%;
   position: relative; /* Tambahkan position relative untuk bisa menempatkan graphic di dalamnya */
   z-index: 1; /* Pastikan z-index lebih tinggi daripada graphic untuk menempatkannya di atas */
+  height: fit-content;
 }
 
 .content {
