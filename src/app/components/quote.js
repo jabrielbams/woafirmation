@@ -34,7 +34,7 @@ const Quotes = ({ token, signature }) => {
             <h1 className={styles.idContent}>001</h1>
           </div>
           <div className={styles.rightContent}>
-            <p className={styles.textContent}>"{data.quotes}"</p>
+            <p className={styles.textContent}>&quot;{data.quotes}&quot;</p>
             <p className={styles.author}>- {data.author} -</p>
           </div>
         </>
